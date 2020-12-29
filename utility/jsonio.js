@@ -1,3 +1,5 @@
+const logger = require("../config/logger");
+
 message = (res, data, code) => {
   // This is the function that all request's body must pass through.
   // This function is not exported because if you really need to use
@@ -9,7 +11,7 @@ error = (res, error = "Server stopped responding", code = 500) => {
   // This is an alias of messages to support better typehinting in code editors
   // Also it improves code legibilaty.
   if (process.env.APP_MODE === "development") {
-    console.error("[error]", error);
+    logger.error("[error]", error);
   }
 
   // For base javascript errors.
